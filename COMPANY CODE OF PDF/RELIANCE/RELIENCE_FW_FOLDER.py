@@ -3,6 +3,15 @@ import fitz  # PyMuPDF
 import re
 import pandas as pd
 
+# Define the path to the folder containing PDF files
+folder_path = r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\RELIANCE PDF'
+
+# List all files in the folder
+files = os.listdir(folder_path)
+
+# Filter only PDF files
+pdf_files = [f for f in files if f.endswith('.pdf')]
+
 # Function to extract data from a single PDF
 def extract_data_from_pdf(pdf_path):
     document = fitz.open(pdf_path)
@@ -24,27 +33,31 @@ def extract_data_from_pdf(pdf_path):
         'Email-ID': re.compile(r'Email-ID\s*:\s*(\S+@\S+\.\S+)'),
         'Registration No.': re.compile(r'Registration\s+No\.\s+([A-Z]{2}\d{2}[A-Z]{2}\d{4})'),
         'GSTIN/UIN & Place of Supply': re.compile(r'GSTIN/UIN & Place of Supply\s*:\s*(.*?)(?=\n|$)'),
-        'Nominee Name': re.compile(r'Nominee Name\s*:\s*(.*?)(?=\n|$)'),
+        'Nominee Name': re.compile(r'Nominee Name\s*:\s*(.*?)\s*$'),
         'Mfg. Month & Year': re.compile(r'Mfg. Month & Year\s*\s*(\w+-\d{4})'),
         'Make / Model & Variant': re.compile(r'Make / Model & Variant\s*:\s*(.*?)\s*(?=CC / HP / Watt|$)'),
         'CC / HP / Watt': re.compile(r'CC / HP / Watt\s*\s*(\d+)'),
         'Engine No.': re.compile(r"Engine\s+No\.\s*/\s*Chassis\s+No\.\s*(\S+)\s*/\s*(\S+)"),
-        'Seating Capacity': re.compile(r"Seating Capacity Including Driver\s*(\d+)"),
-        'Type of Body / LCC': re.compile(r'Type\s*of\s*Body\s*/\s*LCC\s*(.*?)\s*/\s*(\d+)'),
-        'Total Premium': re.compile(r'Total Premium[`\s]*(\d+(?:,\d{3})*(?:\.\d{2})?)'),
+        'Seating Capacity of side car': re.compile(r'Seating Capacity of side car \(if any\)\s+Including driver\s+(.*)'),
+
+        'Type of Body / LCC': re.compile(r'Type\s*of\s*Body\s*/\s*LCC\s*([A-Z]+\s*/\s*\d+)$'),
+
+        'Total Premium (₹)': re.compile(r'Total Premium\s*\(\s*₹\s*\)\s*(\d+(?:\.\d{1,2})?)'),
         'RTO Location': re.compile(r'RTO Location\s*\s*(.*?)(?=\n|$)'),
-        'Total IDV': re.compile(r"IDV\s*`?\s*(\d{1,3}(?:,\d{3})*\.\d+)"),
+        'Total IDV (₹)': re.compile(r'Total IDV\s*\(\s*₹\s*\)\s*([\d,]+\.\d{2})'),
         'Hypothecation/Lease': re.compile(r'Hypothecation/Lease\s*\s*(.*?)(?=\n|$)'),
-        'Own Damage - Section I Amount': re.compile(r'Total Basic Own Damage Premium\s*([\d,]+\.\d{2})'),
+
+        'Total Basic Liability Premium': re.compile(r'Total Basic Liability Premium\s*([\d,]+\.\d{2})'),
+        'TOTAL LIABILITY PREMIUM': re.compile(r'TOTAL LIABILITY PREMIUM\s*([\d,]+\.\d{2})'),
 
         'TOTAL OWN DAMAGE PREMIUM': re.compile(r'TOTAL OWN DAMAGE PREMIUM\s*(\d+(?:\.\d{1,2})?)'),
         # 'Liability - Section II Amount': re.compile(r'Liability - Section II Amount\s*\s*(\d+\.\d{2})'),
         # 'PA Benefits - Section III': re.compile(r'TOTAL LIABILITY PREMIUM\s*\s*(\d+\.\d{2})'),
-        'TOTAL PREMIUM': re.compile(r'TOTAL PREMIUM\s*\(.*\)\s*([\d,]+\.\d{2})'),
+        'TOTAL PACKAGE PREMIUM': re.compile(r'TOTAL PACKAGE PREMIUM\s*\(\s*Sec\s*I\s*\+\s*II\s*\+\s*III\s*\)\s*([\d,]+\.\d{2})'),
         'CGST': re.compile(r'CGST \(@9.00%\)\s*(\d+\.\d{2})'),
         'SGST': re.compile(r'SGST \(@9\.00%\)\s*(\d+\.\d{2})'),
-        'IGST': re.compile(r'IGST \(\d{1,2}\.\d{2}%\)\s*([\d,]+\.\d{2})'),
-        'TOTAL PREMIUM PAYABLE': re.compile(r'TOTAL PREMIUM PAYABLE\s*\(`\)\s*([\d,]+\.\d{2})')
+        'IGST (@18.00%)': re.compile(r'IGST \(@18\.00%\)\s*([\d,]+\.\d{2})'),
+        'TOTAL PREMIUM PAYABLE': re.compile(r'TOTAL PREMIUM PAYABLE\s*\(\s*₹\s*\)\s*([\d,]+\.\d{2})'),
     }
 
     extracted_data = {}
@@ -57,33 +70,29 @@ def extract_data_from_pdf(pdf_path):
 
     return extracted_data
 
-# Function to process all PDFs in a folder
-def process_pdfs_in_folder(folder_path):
-    extracted_data_list = []
-    for filename in os.listdir(folder_path):
-        if filename.endswith('.pdf'):
-            pdf_path = os.path.join(folder_path, filename)
-            try:
-                data = extract_data_from_pdf(pdf_path)
-                data['Filename'] = filename  # Add filename as a column in the extracted data
-                extracted_data_list.append(data)
-            except Exception as e:
-                print(f"Error processing {pdf_path}: {e}")
-    return extracted_data_list
+# List to store all extracted data dictionaries
+all_data = []
 
-# Folder containing the PDFs
-pdf_folder = r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\RELIENCE PDF'  # Adjust this path according to your folder structure
+# Process each PDF file in the folder
+for pdf_file in pdf_files:
+    pdf_path = os.path.join(folder_path, pdf_file)
+    try:
+        data = extract_data_from_pdf(pdf_path)
+        # Append the extracted data to the list
+        all_data.append(data)
+        print(f"Extracted data from {pdf_file}")
+    except Exception as e:
+        print(f"Error processing {pdf_file}: {e}")
 
-# Process all PDFs in the folder
-all_extracted_data = process_pdfs_in_folder(r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\RELIENCE PDF')
+# Convert list of dictionaries to a pandas DataFrame
+df = pd.DataFrame(all_data)
 
-# Convert extracted data to DataFrame
-df = pd.DataFrame(all_extracted_data)
-
-# Output file path
-output_excel_file = r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\RELIENCE PDF\extracted_relience_insurance_data.xlsx'
+# Define the output Excel file path
+excel_file =r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\RELIANCE PDF\extracted_relience_FW_insurance_data.xlsx'
 
 # Write DataFrame to Excel
-df.to_excel(output_excel_file, index=False, engine='openpyxl')
-
-print(f"Extracted data saved to {output_excel_file}")
+try:
+    df.to_excel(excel_file, index=False)
+    print(f"Extracted data saved to {excel_file}")
+except Exception as e:
+    print(f"Error saving extracted data to Excel: {e}")

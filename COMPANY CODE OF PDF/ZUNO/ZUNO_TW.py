@@ -333,7 +333,7 @@ def extract_insurance_data(pdf_path):
         data["legal_liability_to_paid_drivers"] = legal_liability_match.group(1)
 
     # Extract total liability premium
-    total_liability_premium_match = re.search(r"Total liability premium\s+₹\s*([0-9,.]+)", text)
+    total_liability_premium_match = re.search(r"Total liability premium\s+₹\s*(.*)", text)
     if total_liability_premium_match:
         data["total_liability_premium"] = total_liability_premium_match.group(1)
 
@@ -501,6 +501,8 @@ pdf_files = [
     r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\ZUNO PDF\402000189214.pdf',
     r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\ZUNO PDF\402000189237.pdf',
     r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\ZUNO PDF\402000189260.pdf',
+    r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\ZUNO PDF\402000235540.pdf',
+    r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\ZUNO PDF\402000236157.pdf'
 
 
 
@@ -525,7 +527,7 @@ for pdf_file in pdf_files:
 df = pd.DataFrame(all_data)
 
 # Define the output Excel file path
-output_excel = r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\ZUNO PDF\ZUNO_EXCEL.xlsx'
+output_excel = r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\ZUNO PDF\ZUNO_TW_EXCEL.xlsx'
 
 # Save the DataFrame to Excel
 df.to_excel(output_excel, index=False)

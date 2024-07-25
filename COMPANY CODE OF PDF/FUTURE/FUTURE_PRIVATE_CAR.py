@@ -5,12 +5,12 @@ import pandas as pd
 
 # Define your regex patterns
 patterns = {
-    'Policy Number': re.compile(r'Policy No\. : (\S+)'),
+    'Policy Number': re.compile(r'Policy Number\s+(\w+)'),
     'Insured Name': re.compile(r'Dear\s+(.*)'),
     'Address': re.compile(r'Registration address of the Insured\s+(.*)'),
     'Mobile No': re.compile(r'Telephone\(Mob\) : (\d+)'),
     'Email': re.compile(r'Email Id : (\S+@\S+\.\S+)'),
-    'Intermediary Name': re.compile(r'Intermediary Name : (.*?)- BRR'),
+    'Intermediary Name': re.compile(r'Intermediary Name\s*:\s*(.*)'),
     'Date of Issue': re.compile(r'Date : (\d{2}/\d{2}/\d{4})'),
     'Policy Start Date':re.compile(r'Risk start time and date\s+(\d{2}/\d{2}/\d{4})'),
     'Policy End Date': re.compile(r'Risk end date\s+(\d{2}/\d{2}/\d{4})'),
@@ -29,7 +29,7 @@ patterns = {
     'Cubic Capacity': re.compile(r'Cubic Capacity\s*(\d+)'),
     'Registration Number': re.compile(r'Registration\s+No\s*(\w+)'),
     'Make/Model of Vehicle': re.compile(r'Make\s+and\s+Model\s+of\s+vehicle\s+insured\s+([A-Z]+\s+[A-Z]+\s+[A-Z0-9\s-]+)'),
-    'Class of Vehicle': re.compile(r'Class\s+of\s+Vehicle:\s+(.*)'),
+    'Class of Vehicle': re.compile(r'Class\s+of\s+Vehicle\s*:\s*(.*)'),
     'RTO': re.compile(r'RTO\s+where\s+vehicle\s+is/will\s+be\s+registered\s+(.*)'),
     'Year of Manufacture': re.compile(r'Year\s+of\s+Manufacturing\s+(\d{4})'),
     'Nominee Name': re.compile(r'Nominee\s+Name\s+(.*)'),

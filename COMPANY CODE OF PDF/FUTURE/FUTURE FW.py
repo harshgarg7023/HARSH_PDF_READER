@@ -16,7 +16,7 @@ patterns = {
     'Place of Supply(State Code)': re.compile(r'Place of Supply\(State Code\): (\d+)'),
     'GSTIN / UIN Number': re.compile(r'GSTIN / UIN Number\s*:\s*([\w-]+)'),
    # 'Address of Service Provider': re.compile(r'Address of Service Provider\s*:\s*([\s\S]*?)\s*Area Code'),
-    'Area Code': re.compile(r'Area Code\s*:\s*(\S+)'),
+    'Area Code': re.compile(r'Area Code\s*:\s*(.*)'),
     'State Code': re.compile(r'FGI State Code\s*:\s*(\d+)'),
     'FGI GSTIN Number': re.compile(r'FGI GSTIN Number\s*:\s*([\w\d]+)'),
     'FGI PAN Number': re.compile(r'FGI PAN Number:\s*([A-Z0-9]{10})'),
@@ -30,7 +30,8 @@ patterns = {
     'Cubic Capacity': re.compile(r'Cubic Capacity\s*(\d+)'),
     'Registration Number': re.compile(r'Registration\s+No\s*(\w+)'),
     'Make/Model of Vehicle': re.compile(r'Make\s+and\s+Model\s+of\s+vehicle\s+insured\s+([A-Z]+\s+[A-Z]+\s+[A-Z0-9\s-]+)'),
-    'Class of Vehicle': re.compile(r'Class\s+of\s+Vehicle:\s+(.*)'),
+
+    'Class of Vehicle': re.compile(r'Class\s+of\s+Vehicle\s*:\s*(.*)'),
     'RTO': re.compile(r'RTO\s+where\s+vehicle\s+is/will\s+be\s+registered\s+(.*)'),
     'Year of Manufacture': re.compile(r'Year\s+of\s+Manufacturing\s+(\d{4})'),
     'Nominee Name': re.compile(r'Nominee\s+Name\s+(.*)'),

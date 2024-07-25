@@ -56,7 +56,7 @@ def extract_data_from_pdf(pdf_path):
     return extracted_data
 
 # PDF file to process
-pdf_file = r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\RELIENCE PDF\110722423080010920.pdf'
+pdf_file = r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\RELIANCE PDF\110722423080010920.pdf'
 
 # Extract data from the PDF
 try:

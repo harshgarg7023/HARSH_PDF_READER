@@ -10,7 +10,7 @@ patterns = {
     'Address':  re.compile(r'Registration address of the Insured\s+(.*)'),
     'Mobile No': re.compile(r'Telephone\(Mob\) : (\d+)'),
     'Email': re.compile(r'Email Id : (\S+@\S+\.\S+)'),
-    'Intermediary Name': re.compile(r'Intermediary Name : (.*?)- BRR'),
+    'Intermediary Name': re.compile(r'Intermediary Name\s*:\s*(.*)'),
     'Date of Issue': re.compile(r'Date : (\d{2}/\d{2}/\d{4})'),
     'Policy Start Date':re.compile(r'Risk start time and date\s+(\d{2}/\d{2}/\d{4})'),
     'Policy End Date': re.compile(r'Risk end date\s+(\d{2}/\d{2}/\d{4})'),

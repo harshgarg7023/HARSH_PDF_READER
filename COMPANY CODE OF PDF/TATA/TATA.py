@@ -75,15 +75,15 @@ def extract_data_from_pdf(pdf_path):
 
 # List of PDF files to process
 pdf_files = [
-    'TATA PDF/6101894270-00.pdf',
-    'TATA PDF/6101897717-00.pdf',
-    'TATA PDF/6101897726-00.pdf',
-    'TATA PDF/6101897729-00.pdf',
-    'TATA PDF/6203106795-00.pdf',
-    'TATA PDF/t11.pdf',
-    'TATA PDF/t12.pdf',
-    'TATA PDF/t13.pdf',
-    'TATA PDF/6203134035-00.pdf',
+    r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\TATA PDF\6101894270-00.pdf',
+    r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\TATA PDF\6101897717-00.pdf',
+    r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\TATA PDF\6101897726-00.pdf',
+    r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\TATA PDF\6101897729-00.pdf',
+    r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\TATA PDF\6203106795-00.pdf',
+   r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\TATA PDF\t11.pdf',
+   r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\TATA PDF\t12.pdf',
+   r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\TATA PDF\t14.pdf',
+
 
 
 
