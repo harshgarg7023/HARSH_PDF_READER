@@ -35,12 +35,12 @@ def extract_data_from_pdf(pdf_path):
         'GSTIN/UIN & Place of Supply': re.compile(r'GSTIN/UIN & Place of Supply\s*:\s*(.*?)(?=\n|$)'),
         'Nominee Name': re.compile(r'Nominee Name\s*:\s*(.*?)\s*$'),
         'Mfg. Month & Year': re.compile(r'Mfg. Month & Year\s*\s*(\w+-\d{4})'),
-        'Make / Model & Variant': re.compile(r'Make / Model & Variant\s*:\s*(.*?)\s*(?=CC / HP / Watt|$)'),
+        'Make / Model & Variant': re.compile(r'Make\s*/\s*Model\s*([^/]+?)\s*/\s*([^/]+?)\s*/\s*([^/]+)'),
         'CC / HP / Watt': re.compile(r'CC / HP / Watt\s*\s*(\d+)'),
         'Engine No.': re.compile(r"Engine\s+No\.\s*/\s*Chassis\s+No\.\s*(\S+)\s*/\s*(\S+)"),
         'Seating Capacity of side car': re.compile(r'Seating Capacity of side car \(if any\)\s+Including driver\s+(.*)'),
 
-        'Type of Body / LCC': re.compile(r'Type\s*of\s*Body\s*/\s*LCC\s*([A-Z]+\s*/\s*\d+)$'),
+       # 'Type of Body / LCC': re.compile(r'Type\s*of\s*Body\s*/\s*LCC\s*([A-Z]+\s*/\s*\d+)$'),
 
         'Total Premium (₹)': re.compile(r'Total Premium\s*\(\s*₹\s*\)\s*(\d+(?:\.\d{1,2})?)'),
         'RTO Location': re.compile(r'RTO Location\s*\s*(.*?)(?=\n|$)'),
