@@ -76,6 +76,14 @@ def handle_pcv(data):
     return result
 
 
+#FOR PROCESS
+def process(data):
+    # Example processing logic for PCV
+    # Adjust this based on the actual processing needs
+    result = f"Processed PCV data: {data['Policy Number']} - {data['Mobile No']}"
+    return result
+
+
 def extract_details_from_folder(folder_path, patterns):
     data = []
     for filename in os.listdir(folder_path):

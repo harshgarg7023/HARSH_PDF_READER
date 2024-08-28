@@ -90,6 +90,15 @@ def handle_gcv(data):
     result = f"Processed GCV data: {data}"
     return result
 
+#FOR PROCESS
+def process(data):
+    # Example processing logic for GCV
+    # You can adjust this based on what needs to be done with the data
+    result = f"Processed GCV data: {data['Policy Number']} - {data['Insured Name']}"
+    return result
+
+
+
 
 # Function to save details to an Excel file
 def save_to_excel(data, output_file):

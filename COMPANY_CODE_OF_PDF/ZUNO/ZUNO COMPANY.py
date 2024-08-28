@@ -501,7 +501,12 @@ pdf_files = [
     r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\ZUNO PDF\402000189214.pdf',
     r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\ZUNO PDF\402000189237.pdf',
     r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\ZUNO PDF\402000189260.pdf',
-
+    r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\ZUNO PDF\402000245812.pdf',
+    r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\ZUNO PDF\402000245824.pdf',
+    r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\ZUNO PDF\402000245825.pdf',
+r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\ZUNO PDF\402000245861.pdf',
+r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\ZUNO PDF\402000245903.pdf',
+r'C:\Users\user\PycharmProjects\PDF_READER\PDF CONTAINER\ZUNO PDF\402000246115.pdf'
 
 
 

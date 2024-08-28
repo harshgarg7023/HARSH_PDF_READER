@@ -3,7 +3,8 @@ import fitz
 
 patterns = {
      'Company_name_pattern':re.compile(r'HDFC ERGO General Insurance Company Ltd', re.IGNORECASE),
-    "Policy Type": re.compile(r'Certificate of Insurance cum Policy Schedule\s+([^\n]+)', re.MULTILINE),
+    'Policy Type': re.compile(r'Certificate of Insurance cum Policy Schedule\s*(?:\d*\s*)?\n([^\d\n]*\n[^\d\n]*)',
+                              re.MULTILINE),
     'Name': re.compile(r'Email ID\s*:\s*[\w\.-]+@[\w\.-]+\s*\n(.*)', re.MULTILINE),
     'Policy Number': re.compile(r'Policy\s+No\.\s+(\d{4}\s\d{4}\s\d{4}\s\d{4}\s\d{3})'),
     'Intermediary Name':re.compile(r'BROKER Name\s*:\s*(.*?)\s*BROKER Code'),

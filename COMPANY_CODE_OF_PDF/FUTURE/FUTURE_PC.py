@@ -39,7 +39,6 @@ patterns = {
     'Nominee %': re.compile(r'Nominee\s+%\s+(\d+)'),
     'Basic Premium including Premium for TPPD': re.compile(r'Basic\s+Premium\s+including\s+Premium\s+for\s+TPPD\s+([\d,]+\.\d{2})'),
     'Total Own Damage Premium (A)': re.compile(r'Total\s+Own\s+Damage\s+Premium\s+\(A\)\s+\(rounded\s+off\)\s+([\d,]+\.\d{2})'),
-
     'Legal Liability to Paid Driver/Cleaner/Employees': re.compile(r'Legal\s+Liability\s+to\s+Paid\s+Driver/Cleaner/Employees\s+\(No\. of persons \d+\)\s+([\d,]+\.\d{2})'),
     'Total Liability Premium (B)': re.compile(r'Total\s+Liability\s+Premium\s+\(B\)\s+([\d,]+\.\d{2})'),
     'Total Annual Premium (A+B)': re.compile(r'Total\s+Annual\s+Premium\s+\(A\+B\)\s+([\d,]+\.\d{2})'),
@@ -92,7 +91,7 @@ def process_pdfs_in_folder(folder_path):
     return all_details
 
 
-#FOR EX
+
 # FUTURE_PC.py
 
 def handle_private_car(data):
@@ -100,6 +99,12 @@ def handle_private_car(data):
     result = f"Processed Private Car data: {data}"
     return result
 
+#FOR THE PROCESS
+def process(data):
+    # Example processing logic for PC
+    # Adjust this based on the actual processing needs
+    result = f"Processed PC data: {data['Policy Number']} - {data['Address']}"
+    return result
 
 
 

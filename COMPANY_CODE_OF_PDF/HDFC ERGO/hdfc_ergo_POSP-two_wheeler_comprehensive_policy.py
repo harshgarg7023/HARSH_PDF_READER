@@ -25,7 +25,7 @@ patterns = {
     'Body Type': re.compile(r'Body Type\s+([A-Za-z]+)'),
     'CC': re.compile(r'Cubic Capacity\s*/\s*Watts\s*(\d+)'),
     'Seating Capacity including Driver': re.compile(r'Seats\s*(\d+)'),
-     'Previous policy number': re.compile(r'Previous Policy No\.\s*([\w\-\/]+)'),
+    'Previous policy number': re.compile(r'Previous Policy No\.\s*([\w\-\/]+)'),
 
     'Geographical Area':re.compile(r'Geographical Area\s+(\w+)'),
      'Total IDV':re.compile(r'Total IDV\s+([\d,]+)'),
